@@ -1,0 +1,294 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-handwritten: 'Dancing Script', cursive;
+  --font-display: 'Playfair Display', serif;
+  --font-elegant: 'Cormorant Garamond', serif;
+  --font-body: 'Quicksand', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  color: var(--text-primary);
+  background: var(--bg-primary);
+}
+
+#root {
+  min-height: 100dvh;
+  width: 100%;
+}
+
+/* ─── Night sky theme ─── */
+[data-theme='night'] {
+  --bg-primary: #060b1a;
+  --bg-secondary: #0f1633;
+  --accent: #8ec5ff;
+  --accent-strong: #5ba3ff;
+  --accent-soft: rgba(142, 197, 255, 0.22);
+  --accent-glow: rgba(142, 197, 255, 0.5);
+  --text-primary: #f5f8ff;
+  --text-muted: #b8c9e8;
+  --glass: rgba(10, 16, 42, 0.88);
+  --glass-border: rgba(142, 197, 255, 0.4);
+  --gradient: linear-gradient(160deg, #060b1a 0%, #121f4a 45%, #0a1028 100%);
+  --secret-bg: #1e3a7a;
+  --secret-text: #ffffff;
+  --secret-border: #7ec8ff;
+  --secret-accent: #b8e0ff;
+  --secret-bar-bg: #152a5c;
+  --secret-bar-label-bg: rgba(126, 200, 255, 0.15);
+  --modal-bg: #121c45;
+  --modal-text: #f5f8ff;
+}
+
+/* ─── Pastel romance theme ─── */
+[data-theme='pastel'] {
+  --bg-primary: #fff8fa;
+  --bg-secondary: #ffe8f0;
+  --accent: #c23d6b;
+  --accent-strong: #a82d58;
+  --accent-soft: rgba(194, 61, 107, 0.18);
+  --accent-glow: rgba(194, 61, 107, 0.35);
+  --text-primary: #2a1520;
+  --text-muted: #5e3d4d;
+  --glass: rgba(255, 252, 254, 0.94);
+  --glass-border: rgba(194, 61, 107, 0.35);
+  --gradient: linear-gradient(145deg, #fff8fa 0%, #ffe4ef 50%, #fff5f8 100%);
+  --secret-bg: #ffffff;
+  --secret-text: #2a1520;
+  --secret-border: #c23d6b;
+  --secret-accent: #a82d58;
+  --secret-bar-bg: #fff0f5;
+  --secret-bar-label-bg: rgba(194, 61, 107, 0.12);
+  --modal-bg: #ffffff;
+  --modal-text: #2a1520;
+}
+
+.glass {
+  background: var(--glass);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+}
+
+.glow-text {
+  text-shadow: 0 0 20px var(--accent-glow), 0 1px 2px rgba(0, 0, 0, 0.15);
+}
+
+[data-theme='pastel'] .glow-text {
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+.glow-border {
+  box-shadow:
+    0 0 15px var(--accent-soft),
+    inset 0 0 12px var(--accent-soft);
+}
+
+.btn-glow {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-glow:hover {
+  box-shadow:
+    0 0 25px var(--accent-glow),
+    0 0 50px var(--accent-soft);
+  transform: translateY(-2px);
+}
+
+/* Secret message pills — high contrast */
+.secret-note-pill {
+  background: var(--secret-bg);
+  color: var(--secret-text);
+  border: 2px solid var(--secret-border);
+  box-shadow:
+    0 4px 16px rgba(0, 0, 0, 0.25),
+    0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+.secret-note-pill .secret-note-icon {
+  color: var(--secret-accent);
+}
+
+.secret-notes-bar {
+  background: var(--secret-bar-bg);
+  border-bottom: 3px solid var(--secret-border);
+  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.35);
+}
+
+.secret-notes-label {
+  color: var(--secret-accent);
+  background: var(--secret-bar-label-bg);
+}
+
+.secret-notes-panel {
+  background: var(--secret-bar-bg);
+  border: 3px solid var(--secret-border);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+/* Modal for secret messages */
+.secret-modal-panel {
+  background: var(--modal-bg);
+  border: 2px solid var(--secret-border);
+  color: var(--modal-text);
+}
+
+.handwritten {
+  font-family: var(--font-handwritten);
+}
+
+.display-font {
+  font-family: var(--font-display);
+}
+
+.elegant-font {
+  font-family: var(--font-elegant);
+}
+
+/* Paper texture for letter */
+.paper-texture {
+  background-color: #fdf8f0;
+  background-image:
+    url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3z' fill='%23e8dcc8' fill-opacity='0.15' fill-rule='evenodd'/%3E%3C/svg%3E");
+}
+
+.paper-texture,
+.paper-texture p,
+.paper-texture .handwritten {
+  color: #2a1520;
+}
+
+/* Heartbeat */
+@keyframes heartbeat {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  14% {
+    transform: scale(1.15);
+  }
+  28% {
+    transform: scale(1);
+  }
+  42% {
+    transform: scale(1.12);
+  }
+  70% {
+    transform: scale(1);
+  }
+}
+
+.heartbeat {
+  animation: heartbeat 1.8s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-12px) rotate(2deg);
+  }
+}
+
+.float {
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--accent-soft),
+    transparent
+  );
+  background-size: 200% 100%;
+  animation: shimmer 3s infinite;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 3px;
+}
+
+.flip-card-inner {
+  transform-style: preserve-3d;
+  transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.flip-card:hover .flip-card-inner,
+.flip-card.flipped .flip-card-inner {
+  transform: rotateY(180deg);
+}
+.flip-card-front,
+.flip-card-back {
+  backface-visibility: hidden;
+}
+.flip-card-back {
+  transform: rotateY(180deg);
+}
+
+.polaroid-card {
+  position: relative;
+}
+
+.tape::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  z-index: 1;
+  transform: translateX(-50%) rotate(-1deg);
+  width: 72px;
+  height: 22px;
+  background: rgba(255, 235, 180, 0.75);
+  border: 1px solid rgba(200, 180, 120, 0.4);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.polaroid-card > div {
+  border-radius: 2px;
+}
+
+.section-pad {
+  @apply px-4 py-20 sm:px-8 md:py-28 lg:px-16;
+}
+
+.certificate-card {
+  background: linear-gradient(145deg, #fffef8 0%, #faf3e0 100%);
+  border: 3px double #c9a86c;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+}
+
+.love-meter-slider {
+  height: 8px;
+  border-radius: 4px;
+  cursor: pointer;
+}

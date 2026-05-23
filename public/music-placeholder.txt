@@ -1,0 +1,4 @@
+Add your romantic background music here as music.mp3
+The site looks for /music.mp3 (configure in src/config.ts).
+
+Optional: add voice.mp3 for the birthday letter voice note button.
