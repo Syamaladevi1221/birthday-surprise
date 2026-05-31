@@ -125,7 +125,7 @@ export function UnlockPage() {
                 className="mb-8 text-sm sm:text-base"
                 style={{ color: 'var(--text-muted)' }}
               >
-                Enter our special secret...
+                Mana special day gurthuthechukoo....
               </p>
 
               <form onSubmit={handleSubmit} className="space-y-4">
@@ -137,7 +137,7 @@ export function UnlockPage() {
                       setPassword(e.target.value)
                       setError('')
                     }}
-                    placeholder="Our secret memory..."
+                    placeholder="Our special memory..."
                     className="glass glow-border w-full rounded-2xl px-5 py-4 text-center text-base outline-none transition-all focus:ring-2 sm:text-lg"
                     style={{
                       color: 'var(--text-primary)',

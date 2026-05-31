@@ -22,7 +22,7 @@ export function SecretMessagesSection() {
           className="mb-1 text-center text-xs font-bold uppercase tracking-widest sm:text-sm"
           style={{ color: 'var(--secret-accent)' }}
         >
-          💌 For your eyes only
+          💌 Nee kosam ye
         </p>
         <h2
           className="display-font mb-2 text-center text-2xl font-semibold sm:text-3xl"
@@ -34,7 +34,7 @@ export function SecretMessagesSection() {
           className="mb-6 text-center text-sm sm:text-base"
           style={{ color: 'var(--text-muted)' }}
         >
-          Tap any message below to read your secret notes.
+          click chesi chudu nee kosam konni secrets vunnay....😉😉
         </p>
         <SecretMessageButtons
           layout="grid"

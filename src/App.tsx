@@ -9,10 +9,8 @@ import { useThemeOnDocument } from './hooks/useThemeOnDocument'
 import { UnlockPage } from './sections/UnlockPage'
 import { WelcomeSection } from './sections/WelcomeSection'
 import { SecretMessagesSection } from './sections/SecretMessagesSection'
-import { ComplimentSection } from './sections/ComplimentSection'
 import { MemoryGallery } from './sections/MemoryGallery'
 import { Timeline } from './sections/Timeline'
-import { ReasonsILoveYou } from './sections/ReasonsILoveYou'
 import { BirthdayLetter } from './sections/BirthdayLetter'
 import { FinalSurprise } from './sections/FinalSurprise'
 
@@ -44,10 +42,8 @@ function AppContent() {
 
           <main>
             <SecretMessagesSection />
-            <ComplimentSection />
             <MemoryGallery />
             <Timeline />
-            <ReasonsILoveYou />
             <BirthdayLetter />
             <FinalSurprise />
           </main>

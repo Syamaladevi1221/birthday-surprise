@@ -28,7 +28,7 @@ function PolaroidCard({
         playClick()
         onOpen()
       }}
-      className="tape polaroid-card group mx-auto w-full max-w-[280px] cursor-pointer text-left"
+      className="tape polaroid-card group mx-auto w-full max-w-xs sm:max-w-sm cursor-pointer text-left"
     >
       <motion.div
         className="overflow-hidden bg-[#faf8f5] p-3 pb-5 shadow-lg"
@@ -36,11 +36,11 @@ function PolaroidCard({
           boxShadow: '0 4px 6px rgba(0,0,0,0.08), 0 12px 28px rgba(0,0,0,0.12)',
         }}
       >
-        <div className="relative aspect-[4/5] overflow-hidden bg-[#eee8e0]">
+        <div className="relative aspect-auto min-h-[320px] overflow-hidden bg-[#eee8e0]">
           <img
             src={memory.image}
             alt={memory.caption}
-            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+            className="h-full w-full object-contain transition-transform duration-500 group-hover:scale-105"
             loading="lazy"
           />
           <motion.div className="absolute inset-0 flex items-center justify-center bg-black/0 opacity-0 transition-all group-hover:bg-black/25 group-hover:opacity-100">

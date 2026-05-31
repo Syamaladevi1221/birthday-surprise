@@ -185,7 +185,6 @@ export function FinalSurprise() {
           className="mt-6 text-sm"
           style={{ color: 'var(--text-muted)' }}
         >
-          I hope these compliments made your birthday feel extra special.
         </motion.p>
 
         <motion.p

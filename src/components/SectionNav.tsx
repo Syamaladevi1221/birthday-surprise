@@ -2,7 +2,6 @@ import { motion } from 'framer-motion'
 
 const LINKS = [
   { href: '#secret-messages', label: 'Secrets', emoji: '💌' },
-  { href: '#compliments', label: 'Compliments', emoji: '💖' },
   { href: '#memories', label: 'Photos', emoji: '📷' },
   { href: '#timeline', label: 'Story', emoji: '✨' },
   { href: '#letter', label: 'Letter', emoji: '💕' },
@@ -22,12 +21,12 @@ export function SectionNav() {
       transition={{ delay: 0.5 }}
       aria-label="Jump to section"
     >
-      <div className="mx-auto flex max-w-4xl gap-1 overflow-x-auto pb-1 sm:justify-center sm:gap-2">
+      <div className="mx-auto flex max-w-4xl gap-1 overflow-x-auto pb-1 scrollbar-hide sm:justify-center sm:gap-2">
         {LINKS.map((link) => (
           <a
             key={link.href}
             href={link.href}
-            className="flex shrink-0 items-center gap-1 rounded-full px-3 py-1.5 text-xs font-semibold transition-colors sm:text-sm"
+            className="flex shrink-0 items-center gap-1 rounded-full px-2 py-1 text-xs font-semibold transition-colors sm:px-3 sm:py-1.5 sm:text-sm"
             style={{
               color: 'var(--text-primary)',
               background: 'var(--accent-soft)',

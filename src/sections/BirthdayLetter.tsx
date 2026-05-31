@@ -1,25 +1,77 @@
 import { motion } from 'framer-motion'
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { Mic, Mail } from 'lucide-react'
-import { BIRTHDAY_LETTER, YOUR_NAME } from '../config'
+import { BIRTHDAY_LETTER, YOUR_NAME, VOICE_NOTE } from '../config'
 import { useSounds } from '../hooks/useSounds'
+import { useApp } from '../context/AppContext'
 
 export function BirthdayLetter() {
   const [envelopeOpen, setEnvelopeOpen] = useState(false)
   const [showLetter, setShowLetter] = useState(false)
   const [voicePlaying, setVoicePlaying] = useState(false)
   const { playClick, playHeartbeat } = useSounds()
+  const { musicPlaying, toggleMusic } = useApp()
+  const voiceAudioRef = useRef<HTMLAudioElement | null>(null)
+  const musicWasPlayingRef = useRef(false)
+
+  useEffect(() => {
+    if (!voiceAudioRef.current) {
+      const audio = new Audio(VOICE_NOTE)
+      audio.volume = 1
+      voiceAudioRef.current = audio
+    }
+
+    const audio = voiceAudioRef.current
+    const handleEnded = () => {
+      setVoicePlaying(false)
+      // Resume background music if it was playing before
+      if (musicWasPlayingRef.current && !musicPlaying) {
+        toggleMusic()
+      }
+    }
+
+    // Remove old listener and add new one
+    audio.removeEventListener('ended', handleEnded)
+    audio.addEventListener('ended', handleEnded)
+
+    return () => {
+      audio.removeEventListener('ended', handleEnded)
+    }
+  }, [musicPlaying, toggleMusic])
+
+  const toggleVoice = () => {
+    playHeartbeat()
+    const audio = voiceAudioRef.current
+    if (!audio) return
+
+    if (voicePlaying) {
+      // Stop voice
+      audio.pause()
+      audio.currentTime = 0
+      setVoicePlaying(false)
+      // Resume background music if it was playing
+      if (musicWasPlayingRef.current && !musicPlaying) {
+        toggleMusic()
+      }
+    } else {
+      // Play voice
+      // Store music state and pause if playing
+      musicWasPlayingRef.current = musicPlaying
+      if (musicPlaying) {
+        toggleMusic()
+      }
+      audio.currentTime = 0
+      audio.play().catch((err) => {
+        console.error('Voice note playback failed:', err)
+      })
+      setVoicePlaying(true)
+    }
+  }
 
   const openEnvelope = () => {
     playClick()
     setEnvelopeOpen(true)
     setTimeout(() => setShowLetter(true), 800)
-  }
-
-  const toggleVoice = () => {
-    playHeartbeat()
-    setVoicePlaying((p) => !p)
-    /* Add your voice note: place voice.mp3 in /public and use Audio API */
   }
 
   const paragraphs = BIRTHDAY_LETTER.split('\n\n').filter(Boolean)
@@ -134,7 +186,7 @@ export function BirthdayLetter() {
               whileHover={{ scale: 1.02 }}
             >
               <Mic size={18} />
-              {voicePlaying ? 'Playing voice note...' : 'Play voice note (add voice.mp3)'}
+              {voicePlaying ? 'Stop voice note' : 'Play voice note'}
             </motion.button>
           </motion.div>
         )}

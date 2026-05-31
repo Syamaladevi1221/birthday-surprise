@@ -46,7 +46,7 @@ export function MusicToggle() {
       animate={{ opacity: 1, scale: 1 }}
       transition={{ delay: 1 }}
       onClick={toggleMusic}
-      className="glass btn-glow fixed right-4 top-4 z-[70] flex h-11 w-11 items-center justify-center rounded-full sm:right-6 sm:top-6"
+      className="glass btn-glow fixed right-4 top-20 z-[70] flex h-10 w-10 items-center justify-center rounded-full sm:right-6 sm:top-6 sm:h-11 sm:w-11"
       style={{ color: 'var(--accent)' }}
       aria-label={musicPlaying ? 'Pause music' : 'Play music'}
     >

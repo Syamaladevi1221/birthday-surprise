@@ -14,7 +14,7 @@ export function ThemeSwitcher() {
     <motion.div
       initial={{ opacity: 0, y: -10 }}
       animate={{ opacity: 1, y: 0 }}
-      className="glass fixed left-4 top-4 z-[70] flex gap-1 rounded-full p-1 sm:left-6 sm:top-6"
+      className="glass fixed left-4 top-20 z-[70] flex gap-1 rounded-full p-1 sm:left-6 sm:top-6"
     >
       {THEMES.map((t) => (
         <button

@@ -42,7 +42,7 @@ export function WelcomeSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6, duration: 1 }}
         >
-          {['Happy', 'Birthday', 'My', 'Love', '❤️'].map((word, i) => (
+          {['Happy', 'Birthday', 'My', 'Husband', '❤️'].map((word, i) => (
             <motion.span
               key={word}
               className="inline-block mr-2 sm:mr-3"
@@ -72,7 +72,7 @@ export function WelcomeSection() {
           animate={{ opacity: 1 }}
           transition={{ delay: 2 }}
         >
-          Today you are the main character 🎂👑
+          Today you are the main Heroo 🎂👑
         </motion.p>
 
         <motion.p
@@ -82,7 +82,6 @@ export function WelcomeSection() {
           animate={{ opacity: 1 }}
           transition={{ delay: 2.2 }}
         >
-          Scroll down to the Compliments section for sweet words and birthday love.
         </motion.p>
 
         <motion.div
